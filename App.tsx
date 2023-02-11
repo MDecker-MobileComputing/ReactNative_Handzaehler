@@ -1,24 +1,41 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
   
 
 function App(): JSX.Element {
 
+  let state = { zaehler: 0 };
+
+  const onPlusButtonPressed = () => {
+
+    console.log("Plus-Button gedrückt.");
+  };
+
+  const onMinusButtonPressed = () => {
+
+    console.log("Minus-Button gedrückt.");
+  };
+
+  const onResetButtonPressed = () => {
+
+    console.log("Reset-Button gedrückt.");
+  };
+
+
   return (
     <View style={styles.container}>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPlusButtonPressed}>
         <Text style={styles.buttonText}>Plus</Text>
       </TouchableOpacity>
 
       <Text style={styles.zaehlerText}>0</Text>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onMinusButtonPressed}>
         <Text style={styles.buttonText}>Minus</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onResetButtonPressed}>
         <Text style={styles.buttonReset}>Reset</Text>
       </TouchableOpacity>
 
