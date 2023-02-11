@@ -117,6 +117,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            if (project.hasProperty('MEIN_UPLOAD_STORE_FILE')) {
+                storeFile file(MEIN_UPLOAD_STORE_FILE)
+                storePassword MEIN_UPLOAD_STORE_PASSWORD
+                keyAlias MEIN_UPLOAD_KEY_ALIAS
+                keyPassword MEIN_UPLOAD_KEY_PASSWORD
+            }
+        }        
     }
     buildTypes {
         debug {
