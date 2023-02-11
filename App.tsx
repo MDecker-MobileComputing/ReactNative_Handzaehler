@@ -1,23 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
   
 
 function App(): JSX.Element {
 
-  let state = { zaehler: 0 };
+  const [zaehlerwert, setZaehlerwert] = useState(0);
 
   const onPlusButtonPressed = () => {
 
+    setZaehlerwert( zaehlerwert + 1 );
     console.log("Plus-Button gedrückt.");
   };
 
   const onMinusButtonPressed = () => {
 
+    setZaehlerwert( zaehlerwert - 1 );
     console.log("Minus-Button gedrückt.");
   };
 
   const onResetButtonPressed = () => {
 
+    setZaehlerwert( 0 );
     console.log("Reset-Button gedrückt.");
   };
 
@@ -29,7 +32,7 @@ function App(): JSX.Element {
         <Text style={styles.buttonText}>Plus</Text>
       </TouchableOpacity>
 
-      <Text style={styles.zaehlerText}>0</Text>
+      <Text style={styles.zaehlerText}>{ zaehlerwert }</Text>
 
       <TouchableOpacity onPress={onMinusButtonPressed}>
         <Text style={styles.buttonText}>Minus</Text>
