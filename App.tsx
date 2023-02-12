@@ -16,29 +16,15 @@ function App(): JSX.Element {
 
   /**
    * Event-Handler-Methode für "Minus"-Button.
-   * Es wird ein Dialog (Alert) angezeigt, wenn ein negativer Zählerwert
-   * verhindert wurde; siehe auch die folgende Seite für Alerts:
-   * https://reactnative.dev/docs/alert
    */
   const onMinusButtonPressed = () => {
 
-    if (zaehlerwert > 0) {
-
-      setZaehlerwert( zaehlerwert - 1 );
-
-    } else {
-
-      Alert.alert("Hinweis", "Negative Werte sind nicht zulässig.",
-        [{
-          text: "Weitermachen"
-        }]);
-
-      console.log("Minus-Operation wird ignoriert, damit Zähler nicht negativ wird.");
-    }
+    setZaehlerwert( zaehlerwert - 1 );
   };
 
   /**
    * Event-Handler-Methode für "Reset"-Button.
+   * Vor dem Zurücksetzen des Zählers muss der Nutzer dies bestätigen.
    */
   const onResetButtonPressed = () => {
 
@@ -51,8 +37,8 @@ function App(): JSX.Element {
                  { 
                   text: "Ja",
                   onPress: () => { setZaehlerwert( 0 ) } 
-                 }
-          ]);
+                 }]
+          );
   };
 
 
@@ -65,13 +51,15 @@ function App(): JSX.Element {
 
       <Text style={styles.zaehlerText}>{ zaehlerwert }</Text>
 
-      <TouchableOpacity onPress={onMinusButtonPressed}>
-        <Text style={styles.buttonText}>Minus</Text>
-      </TouchableOpacity>
+      {zaehlerwert > 0 && <View>
+        <TouchableOpacity onPress={onMinusButtonPressed}>
+          <Text style={styles.buttonText}>Minus</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={onResetButtonPressed}>
-        <Text style={styles.buttonReset}>Reset</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={onResetButtonPressed}>
+          <Text style={styles.buttonReset}>Reset</Text>
+        </TouchableOpacity>
+      </View>}
 
     </View>
   );
