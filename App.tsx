@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, View, Alert } from 'react-native';
 
 
 function App(): JSX.Element {
@@ -19,6 +19,11 @@ function App(): JSX.Element {
 
     } else {
 
+      Alert.alert("Hinweis", "Negative Werte sind nicht zulässig.", [
+        {
+          text: "Weitermachen"
+        }
+      ]);
       console.log("Minus-Operation wird ignoriert, damit Zähler nicht negativ wird.");
     }
   };
