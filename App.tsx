@@ -6,11 +6,20 @@ function App(): JSX.Element {
 
   const [zaehlerwert, setZaehlerwert] = useState(0);
 
+  /**
+   * Event-Handler-Methode für "Plus"-Button.
+   */
   const onPlusButtonPressed = () => {
 
     setZaehlerwert( zaehlerwert + 1 );
   };
 
+  /**
+   * Event-Handler-Methode für "Minus"-Button.
+   * Es wird ein Dialog (Alert) angezeigt, wenn ein negativer Zählerwert
+   * verhindert wurde; siehe auch die folgende Seite für Alerts:
+   * https://reactnative.dev/docs/alert
+   */
   const onMinusButtonPressed = () => {
 
     if (zaehlerwert > 0) {
@@ -19,18 +28,31 @@ function App(): JSX.Element {
 
     } else {
 
-      Alert.alert("Hinweis", "Negative Werte sind nicht zulässig.", [
-        {
+      Alert.alert("Hinweis", "Negative Werte sind nicht zulässig.",
+        [{
           text: "Weitermachen"
-        }
-      ]);
+        }]);
+
       console.log("Minus-Operation wird ignoriert, damit Zähler nicht negativ wird.");
     }
   };
 
+  /**
+   * Event-Handler-Methode für "Reset"-Button.
+   */
   const onResetButtonPressed = () => {
 
-    setZaehlerwert( 0 );
+    Alert.alert("Sicherheitsfrage",
+                "Wollen Sie wirklich den Zähler auf Null zurücksetzen?",
+                [{
+                  text: "Abbrechen",
+                  style: "cancel",
+                 },
+                 { 
+                  text: "Ja",
+                  onPress: () => { setZaehlerwert( 0 ) } 
+                 }
+          ]);
   };
 
 
