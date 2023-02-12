@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
-  
+
 
 function App(): JSX.Element {
 
@@ -9,19 +9,23 @@ function App(): JSX.Element {
   const onPlusButtonPressed = () => {
 
     setZaehlerwert( zaehlerwert + 1 );
-    console.log("Plus-Button gedrückt.");
   };
 
   const onMinusButtonPressed = () => {
 
-    setZaehlerwert( zaehlerwert - 1 );
-    console.log("Minus-Button gedrückt.");
+    if (zaehlerwert > 0) {
+
+      setZaehlerwert( zaehlerwert - 1 );
+
+    } else {
+
+      console.log("Minus-Operation wird ignoriert, damit Zähler nicht negativ wird.");
+    }
   };
 
   const onResetButtonPressed = () => {
 
     setZaehlerwert( 0 );
-    console.log("Reset-Button gedrückt.");
   };
 
 

@@ -13,7 +13,7 @@ app written with [React Native](https://reactnative.dev/) in TypeScript and with
 
 <br>
 
-* Start an Android emulator
+Preparation: Start an Android emulator
 
 <br>
 
